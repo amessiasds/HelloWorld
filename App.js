@@ -1,13 +1,25 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
+import React, {useState} from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import Constants from 'expo-constants';
+
+import Login from './pages/Login';
+import Agendas from './pages/Agendas';
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
+  const [DDLogado, SetLogado] = useState(null)
+  
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Login" component={Login} />
+        <Stack.Screen name="Agendas" component={Agendas} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
